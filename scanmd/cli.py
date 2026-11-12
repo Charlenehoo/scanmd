@@ -23,6 +23,11 @@ IGNORE_FILE_NAME = ".scanignore"
 
 def main(argv: list[str] | None = None) -> int:
     argv = sys.argv[1:] if argv is None else argv
+
+    if sys.stdin.isatty():
+        print("usage: git ls-files | scanmd [output.md]", file=sys.stderr)
+        return 2
+
     out_path = Path(argv[0]) if argv else Path("scan.md")
 
     scanner = Scanner(
