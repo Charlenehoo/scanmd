@@ -47,4 +47,6 @@ class Scanner:
             out.write(self.renderer.render(display, lang, content))
             report.written += 1
 
+        out.write(self.renderer.render_skipped(report))
+
         return report
