@@ -19,4 +19,4 @@ scanmd = "scanmd.cli:main"
 packages = ["scanmd"]
 
 [tool.setuptools.package-data]
-"scanmd" = ["languages.json"]
+"scanmd" = ["languages.json", "encodings.json"]

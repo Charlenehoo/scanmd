@@ -18,6 +18,7 @@ from .renderer import MarkdownRenderer
 from .scanner import Scanner
 
 LANG_CONFIG_PATH = Path(__file__).with_name("languages.json")
+ENCODING_CONFIG_PATH = Path(__file__).with_name("encodings.json")
 IGNORE_FILE_NAME = ".scanignore"
 
 
@@ -34,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
         source=StdinPathSource(sys.stdin),
         ignore=IgnoreRules.from_file(Path(IGNORE_FILE_NAME)),
         languages=LanguageMap.from_json(LANG_CONFIG_PATH),
-        reader=FileReader(),
+        reader=FileReader.from_json(ENCODING_CONFIG_PATH),
         renderer=MarkdownRenderer(),
     )
 
